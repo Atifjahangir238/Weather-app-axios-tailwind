@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Weather from "./components/Weather";
+import SearchBar from "./components/SearchBar";
 
 function App() {
+  const [city, setCity] = useState('');
+  const handleSeach = (enterCity) => {
+    setCity(enterCity);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="text-center bg-blue-50  min-h-screen flex flex-col">
+        <div className=" m-auto p-7 rounded shadow-lg bg-slate-500">
+        <h1 className="font-bold text-4xl text-blue-400">Weather App</h1>
+        <SearchBar handleSeach={handleSeach} />
+        <Weather city={city} />
+        </div>
+      </div>
+    </>
   );
 }
 
